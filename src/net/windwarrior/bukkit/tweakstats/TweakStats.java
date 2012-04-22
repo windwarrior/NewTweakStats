@@ -29,6 +29,7 @@ public class TweakStats extends JavaPlugin {
             this.getDatabase().find(TweakDeath.class);
         } catch (PersistenceException pe) {
             this.getLogger().severe("[TweakStats] not able to find database table, shutting down");
+            this.getPluginLoader().disablePlugin(this);
         }
 
     }
