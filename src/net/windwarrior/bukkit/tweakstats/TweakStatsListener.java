@@ -5,8 +5,10 @@
 package net.windwarrior.bukkit.tweakstats;
 
 import java.util.Date;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -35,7 +37,16 @@ public class TweakStatsListener implements Listener {
         if (lastDamageCause instanceof EntityDamageByEntityEvent) {
             EntityDamageByEntityEvent edb = (EntityDamageByEntityEvent) lastDamageCause;
             Entity damager = edb.getDamager();
-            if (damager instanceof Player) {
+            if (damager instanceof Projectile){
+                Projectile pj = (Projectile) damager;
+                if(pj.getShooter() instanceof Player){
+                    Player pl = ((Player) pj.getShooter());
+                    otherentity = pl.getName();
+                }else{
+                    otherentity = pj.getShooter().getType().getName();
+                }
+                
+            }else if (damager instanceof Player) {
                 Player pl = (Player) damager;
                 otherentity = pl.getDisplayName();
             } else {
