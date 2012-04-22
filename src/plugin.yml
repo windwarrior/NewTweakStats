@@ -1,0 +1,5 @@
+name: TweakStats
+version: 0.1.0
+description: Logs deaths of players into databases
+main: net.windwarrior.bukkit.tweakstats.TweakStats
+database: true
