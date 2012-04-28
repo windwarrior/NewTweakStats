@@ -54,16 +54,17 @@ public class TweakStatsListener implements Listener {
             }
 
         }
-
-        ts.getDatabase().insert(new TweakDeath(
+        
+        TweakDeath td = new TweakDeath(
                 entity.getName(),
                 entity.getLocation().getWorld().getName(),
-                dc.toString(), entity.getLocation().getX(),
+                dc.toString(), 
+                entity.getLocation().getX(),
                 entity.getLocation().getY(),
                 entity.getLocation().getZ(),
                 new Date(System.currentTimeMillis()),
-                otherentity));
-
+                otherentity);
+        ts.getDatabase().save(td);
 
     }
 }
