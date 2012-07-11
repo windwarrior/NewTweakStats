@@ -56,15 +56,19 @@ public class TweakStatsListener implements Listener {
         }
         
         TweakDeath td = new TweakDeath(
-                entity.getName(),
+                stripName(entity.getName()),
                 entity.getLocation().getWorld().getName(),
                 dc.toString(), 
                 entity.getLocation().getX(),
                 entity.getLocation().getY(),
                 entity.getLocation().getZ(),
                 new Date(System.currentTimeMillis()),
-                otherentity);
+                stripName(otherentity));
         ts.getDatabase().save(td);
 
+    }
+    
+    public String stripName(String name){
+        return name.replaceAll("§[0-9a-fk-or]", "").replaceAll("&c[0-9a-fk-or]", "");
     }
 }
