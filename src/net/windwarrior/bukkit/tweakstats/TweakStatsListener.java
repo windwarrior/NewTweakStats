@@ -69,6 +69,6 @@ public class TweakStatsListener implements Listener {
     }
     
     public String stripName(String name){
-        return name.replaceAll("§[0-9a-fk-or]", "").replaceAll("&c[0-9a-fk-or]", "");
+        return name != null ? name.replaceAll("§[0-9a-fk-or]", "").replaceAll("&c[0-9a-fk-or]", "") : null;
     }
 }
