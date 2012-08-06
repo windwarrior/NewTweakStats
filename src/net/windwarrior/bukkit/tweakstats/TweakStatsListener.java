@@ -5,7 +5,7 @@
 package net.windwarrior.bukkit.tweakstats;
 
 import java.util.Date;
-import org.bukkit.entity.Arrow;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -48,13 +48,12 @@ public class TweakStatsListener implements Listener {
                 
             }else if (damager instanceof Player) {
                 Player pl = (Player) damager;
-                otherentity = pl.getDisplayName();
+                otherentity = pl.getName();
             } else {
                 otherentity = damager.getType().getName();
             }
 
         }
-        
         TweakDeath td = new TweakDeath(
                 stripName(entity.getName()),
                 entity.getLocation().getWorld().getName(),
@@ -63,7 +62,7 @@ public class TweakStatsListener implements Listener {
                 entity.getLocation().getY(),
                 entity.getLocation().getZ(),
                 new Date(System.currentTimeMillis()),
-                stripName(otherentity));
+                stripName(otherentity));  
         ts.getDatabase().save(td);
 
     }
